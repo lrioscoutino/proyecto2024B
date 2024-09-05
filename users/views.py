@@ -27,3 +27,9 @@ def base_view(request):
         request,
         "base.html"
     )
+
+def list_view(request):
+    return render(
+        request,
+        "list.html"
+    )

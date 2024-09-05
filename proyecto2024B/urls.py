@@ -24,12 +24,15 @@ from users.views import (
     first_view,
     second_view,
     base_view,
+    list_view,
 )
+from products.views import products_list_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', first_view, name="first-view"),
     path('users2/', second_view, name="second-view"),
+    path('list/', products_list_view, name="list-view"),
     path('', LoginView.as_view(template_name="base.html"), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
 ]
