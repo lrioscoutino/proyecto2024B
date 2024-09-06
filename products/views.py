@@ -36,3 +36,7 @@ def product_update_view(request, product_id):
         "product/form.html",
         context=context
     )
+
+def product_delete_view(request, product_id):
+    Product.objects.get(id=product_id).delete()
+    return redirect(reverse_lazy("list-products-view"))
