@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>Lista de Productos</h2>
-
-
-
+<a class="btn btn-primary" href="{% url 'create-product-view' %}">Agregar</a>
 <table class="table">
     <thead>
     <tr>
@@ -16,7 +14,7 @@
   <tbody>
   {% for product in products %}
     <tr>
-      <th scope="row">{{product.id}}</th>
+      <th scope="row"><a href="{% url 'update-product-view' product_id=product.id %}">{{product.id}}<a/></th>
       <td>{{product.name}}</td>
       <td>{{product.description}}</td>
       <td>{{product.price}}</td>
