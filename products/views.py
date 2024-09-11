@@ -4,7 +4,18 @@ from products.models import Product
 
 # Create your views here.
 def products_list_view(request):
-    products = Product.objects.all()
+    products = []
+    if 'Editor' in request.user.groups.values_list(
+        'name',
+        flat=True
+    ):
+        if request.user.is_superuser:
+            products = Product.objects.all()
+        else:
+            products = Product.objects.filter(
+                user=request.user,
+                # is_active=True,
+            )
     context = {
         "products": products
     }
@@ -16,6 +27,7 @@ def product_create_view(request):
         product.name = request.POST['name']
         product.description = request.POST['description']
         product.price = request.POST['price']
+        product.user = request.user
         product.save()
         return redirect(reverse_lazy("list-products-view"))
     return render(request, "product/form.html" )
@@ -26,6 +38,7 @@ def product_update_view(request, product_id):
         product.name = request.POST['name']
         product.description = request.POST['description']
         product.price = request.POST['price']
+        product.user = request.user
         product.save()
         return redirect(reverse_lazy("list-products-view"))
     context = {
