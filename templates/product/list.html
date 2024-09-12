@@ -9,6 +9,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Description</th>
       <th scope="col">Precio</th>
+      <th scope="col">Imagen</th>
       <th scope="col">Acción</th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
       <td>{{product.name}}</td>
       <td>{{product.description}}</td>
       <td>{{product.price}}</td>
+      <td><img src="http://127.0.0.1:8000/{{product.thumbnail}}"> </td>
       <td><a class="btn btn-danger" href="{% url 'delete-product-view' product_id=product.id %}">Eliminar</a></td>
     </tr>
   {% endfor %}

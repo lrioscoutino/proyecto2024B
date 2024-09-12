@@ -1,21 +1,26 @@
+from itertools import product
+from lib2to3.fixes.fix_input import context
+
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from products.models import Product
+from products.forms import ProductForm
+
 
 # Create your views here.
 def products_list_view(request):
     products = []
-    if 'Editor' in request.user.groups.values_list(
-        'name',
-        flat=True
-    ):
-        if request.user.is_superuser:
-            products = Product.objects.all()
-        else:
-            products = Product.objects.filter(
+    # if 'Editor' in request.user.groups.values_list(
+    #     'name',
+    #     flat=True
+    # ):
+    if request.user.is_superuser:
+        products = Product.objects.all()
+    else:
+        products = Product.objects.filter(
                 user=request.user,
                 # is_active=True,
-            )
+        )
     context = {
         "products": products
     }
@@ -30,7 +35,10 @@ def product_create_view(request):
         product.user = request.user
         product.save()
         return redirect(reverse_lazy("list-products-view"))
-    return render(request, "product/form.html" )
+    return render(
+        request,
+        "product/form.html",
+    )
 
 def product_update_view(request, product_id):
     product = Product.objects.get(id=product_id)
