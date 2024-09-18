@@ -1,10 +1,12 @@
-from itertools import product
-from lib2to3.fixes.fix_input import context
-
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from products.models import Product
 from products.forms import ProductForm
+from django.views.generic import (
+    ListView,
+    View
+)
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -61,3 +63,32 @@ def product_update_view(request, product_id):
 def product_delete_view(request, product_id):
     Product.objects.get(id=product_id).delete()
     return redirect(reverse_lazy("list-products-view"))
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = "product/product_list.html"
+    context_object_name = "products"
+
+    def get_queryset(self):
+        return Product.objects.all()
+
+
+class ProductView(View):
+
+    def get(self, request):
+        data = {
+            "mensaje": "Esto es una respuesta GET en JSON",
+            "método": "GET",
+            "status": "success"
+        }
+        return JsonResponse(data)
+
+    def post(self, request):
+        pass
+
+    def put(self, request):
+        pass
+
+    def delete(self, request):
+        pass
