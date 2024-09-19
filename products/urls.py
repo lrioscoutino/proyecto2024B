@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from products.views import (
     products_list_view,
     product_create_view,
@@ -8,6 +8,7 @@ from products.views import (
     ProductView,
 )
 
+from products.routers import router
 
 urlpatterns = [
     path('list/', products_list_view, name="list-products-view"),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('delete/<int:product_id>/', product_delete_view, name="delete-product-view"),
     path('list-view/', ProductListView.as_view(), name="list-view"),
     path('product-view/', ProductView.as_view(), name="product-view"),
+    path('api/v1/', include(router.urls))
 ]
