@@ -1,0 +1,80 @@
+[
+{
+  "model": "products.product",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "name": "Tubo",
+    "description": "Tubo de ccobre",
+    "price": "15.0000",
+    "is_active": true,
+    "image": "images_product/sal_imagen_Q4c1TtF.jpeg",
+    "thumbnail": "thumbs/sal_imagen_thumb_MZfL5vj.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "user": null,
+    "name": "Cemento",
+    "description": "Cemento cruz azul",
+    "price": "200.0000",
+    "is_active": true,
+    "image": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "user": null,
+    "name": "Fibra",
+    "description": "Fibra sintetica",
+    "price": "233.0000",
+    "is_active": true,
+    "image": "",
+    "thumbnail": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "user": null,
+    "name": "Papel",
+    "description": "Papel chino",
+    "price": "344.0000",
+    "is_active": true,
+    "image": "images_product/papel.jpeg",
+    "thumbnail": "thumbs/papel_thumb.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 7,
+  "fields": {
+    "user": 1,
+    "name": "Zapato",
+    "description": "Zapato tenis",
+    "price": "344.0000",
+    "is_active": true,
+    "image": "images_product/zapato.jpeg",
+    "thumbnail": "thumbs/zapato_thumb.jpeg"
+  }
+},
+{
+  "model": "products.product",
+  "pk": 8,
+  "fields": {
+    "user": 2,
+    "name": "Sal",
+    "description": "Sal refinada",
+    "price": "18.0000",
+    "is_active": false,
+    "image": "images_product/sal_imagen_JHIYLkh.jpeg",
+    "thumbnail": "thumbs/sal_imagen_thumb.jpeg"
+  }
+}
+]
